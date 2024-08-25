@@ -10,13 +10,13 @@ CERC_APP_TYPE=${CERC_APP_TYPE:-"webapp"}
 CERC_REPO_REF=${CERC_REPO_REF:-${GITHUB_SHA:-`git log -1 --format="%H"`}}
 CERC_IS_LATEST_RELEASE=${CERC_IS_LATEST_RELEASE:-"true"}
 
-rcd_name=$(jq -r '.name' package.json | sed 's/null//')
-rcd_desc=$(jq -r '.description' package.json | sed 's/null//')
+rcd_name=$(jq -r '.name' static_config.json | sed 's/null//')
+rcd_desc=$(jq -r '.description' static_config.json | sed 's/null//')
 rcd_repository=$(jq -r '.repository' static_config.json | sed 's/null//')
-rcd_homepage=$(jq -r '.homepage' package.json | sed 's/null//')
-rcd_license=$(jq -r '.license' package.json | sed 's/null//')
-rcd_author=$(jq -r '.author' package.json | sed 's/null//')
-rcd_app_version=$(jq -r '.version' package.json | sed 's/null//')
+rcd_homepage=$(jq -r '.homepage' static_config.json | sed 's/null//')
+rcd_license=$(jq -r '.license' static_config.json | sed 's/null//')
+rcd_author=$(jq -r '.author' static_config.json | sed 's/null//')
+rcd_app_version=$(jq -r '.version' static_config.json | sed 's/null//')
 
 cat <<EOF > "$CONFIG_FILE"
 services:
