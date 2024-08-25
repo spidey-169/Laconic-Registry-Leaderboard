@@ -12,7 +12,7 @@ CERC_IS_LATEST_RELEASE=${CERC_IS_LATEST_RELEASE:-"true"}
 
 rcd_name=$(jq -r '.name' package.json | sed 's/null//')
 rcd_desc=$(jq -r '.description' package.json | sed 's/null//')
-rcd_repository=$(jq -r '.repository' package.json | sed 's/null//')
+rcd_repository=$(jq -r '.repository' static_config.json | sed 's/null//')
 rcd_homepage=$(jq -r '.homepage' package.json | sed 's/null//')
 rcd_license=$(jq -r '.license' package.json | sed 's/null//')
 rcd_author=$(jq -r '.author' package.json | sed 's/null//')
