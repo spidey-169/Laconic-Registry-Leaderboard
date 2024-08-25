@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laconic Registry Leaderboard</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #logo {
+            margin: 20px 0;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            cursor: pointer;
+            background-color: #333;
+        }
+        th:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="logo.svg" alt="Logo" width="200">
+    <h1>Laconic Record Leaderboard</h1>
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Authority</th>
+                <th onclick="sortTable(1)">Applications</th>
+                <th onclick="sortTable(2)">DNS</th>
+                <th onclick="sortTable(3)">Deployments</th>
+                <th onclick="sortTable(4)">Total Records</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamisch eingefügte Zeilen -->
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
