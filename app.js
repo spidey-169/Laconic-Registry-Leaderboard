@@ -1,4 +1,7 @@
 async function fetchData() {
+    updateStatus("Fetching data");
+    const loadingAnimation = animateDots(); // Start the dots animation
+
     const response = await fetch('https://laconicd.laconic.com/api', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -12,8 +15,16 @@ async function fetchData() {
             `
         })
     });
-    
+
     const result = await response.json();
+    clearInterval(loadingAnimation); // Stop the dots animation
+    updateStatus("Data fetched"); // Update status to "Data fetched"
+
+    // Timeout to hide the status after 2 seconds
+    setTimeout(() => {
+        updateStatus(""); // Clear the status text so it disappears
+    }, 2000); // 2000ms = 2 seconds
+
     return result.data.queryRecords;
 }
 
@@ -95,6 +106,23 @@ function sortTable(columnIndex) {
 
     const tbody = table.querySelector('tbody');
     rows.forEach(row => tbody.appendChild(row));
+}
+
+function updateStatus(message) {
+    const statusElement = document.getElementById('status');
+    if (statusElement) {
+        statusElement.textContent = message;
+    }
+}
+
+function animateDots() {
+    const statusElement = document.getElementById('status');
+    let dots = 0;
+
+    return setInterval(() => {
+        dots = (dots + 1) % 4; // Counts from 0 to 3 (corresponds to the dots)
+        statusElement.textContent = 'Fetching data' + '.'.repeat(dots);
+    }, 500); // 500ms interval for the animation
 }
 
 async function init() {
